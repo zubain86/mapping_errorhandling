@@ -1,4 +1,4 @@
-This project performs following spring concepts:
+This project uses following spring concepts:
 
 1 - Exception handling 
 
