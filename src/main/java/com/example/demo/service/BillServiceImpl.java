@@ -4,17 +4,16 @@ import com.example.demo.dao.BillRepo;
 import com.example.demo.dto.BillDTO;
 import com.example.demo.dto.DeviceDTO;
 import com.example.demo.entity.BillEntity;
+import com.example.demo.entity.DeviceEntity;
 import com.example.demo.exceptions.ErrorMessages;
 import com.example.demo.exceptions.UserException;
 import com.example.demo.mapper.BillMapper;
 import com.example.demo.validator.DeviceValidation;
 import com.example.demo.validator.EmailValidator;
-import com.sendgrid.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,6 +45,10 @@ public class BillServiceImpl implements BillService {
         isValid.deviceValidation(color);
         BillEntity bill = billMapper.billDTOToBillEntity(billDTO);
         BillEntity standardBill = repo.save(bill);
+        for (DeviceEntity deviceEntity:standardBill.getDevices()) {
+            repo.addForeignKey(bill.getBill_id(),deviceEntity.getDevice_id());
+        }
+
         returnValue = billMapper.billEntityToBillDTO(standardBill);
 //        Response response = emailService.emailSendService(billDTO, files);
 
