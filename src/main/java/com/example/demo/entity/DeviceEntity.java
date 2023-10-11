@@ -15,9 +15,9 @@ public class DeviceEntity {
     private String deviceType;
 
    private String deviceColour;
-   @ManyToOne
-   @JoinColumn(name = "bill_fk",referencedColumnName = "bill_id")
-   private BillEntity bill;
+//   @ManyToOne
+//   @JoinColumn(name = "bill_fk",referencedColumnName = "bill_id")
+//   private BillEntity bill;
 
     public Long getDevice_id() {
         return device_id;
@@ -43,12 +43,12 @@ public class DeviceEntity {
         this.deviceColour = deviceColour;
     }
 
-    public BillEntity getBill() {
-        return bill;
-    }
-
-    public void setBill(BillEntity bill) {
-        this.bill = bill;
-
-    }
+//    public BillEntity getBill() {
+//        return bill;
+//    }
+//
+//    public void setBill(BillEntity bill) {
+//        this.bill = bill;
+//
+//    }
 }

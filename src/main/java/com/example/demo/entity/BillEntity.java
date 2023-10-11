@@ -18,13 +18,13 @@ public class BillEntity {
 
     private String name;
     private String email;
-//    @OneToMany(targetEntity = DeviceEntity.class,cascade = CascadeType.ALL)
-//    @JoinColumn(name = "bill_fk", referencedColumnName = "bill_id")
-//    private List<DeviceEntity> devices;
+    @OneToMany(targetEntity = DeviceEntity.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "bill_fk", referencedColumnName = "bill_id")
+    private List<DeviceEntity> devices;
 
 
-    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL)
-    List<DeviceEntity> devices = new ArrayList<>();
+//    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL)
+//    List<DeviceEntity> devices = new ArrayList<>();
 
     @OneToOne(targetEntity = UserAddressEntity.class, cascade = CascadeType.ALL)
     private UserAddressEntity address;

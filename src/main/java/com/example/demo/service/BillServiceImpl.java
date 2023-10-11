@@ -45,9 +45,9 @@ public class BillServiceImpl implements BillService {
         isValid.deviceValidation(color);
         BillEntity bill = billMapper.billDTOToBillEntity(billDTO);
         BillEntity standardBill = repo.save(bill);
-        for (DeviceEntity deviceEntity:standardBill.getDevices()) {
-            repo.addForeignKey(bill.getBill_id(),deviceEntity.getDevice_id());
-        }
+//        for (DeviceEntity deviceEntity:standardBill.getDevices()) {
+//            repo.addForeignKey(bill.getBill_id(),deviceEntity.getDevice_id());
+//        }
 
         returnValue = billMapper.billEntityToBillDTO(standardBill);
 //        Response response = emailService.emailSendService(billDTO, files);
